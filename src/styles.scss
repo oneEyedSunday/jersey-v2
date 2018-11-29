@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+
+$basefont: 18px;
+$primary-color: #105fde;
+$primary-bg-color: #0e4db5d4;
+$text-color: #fff;
+$headerHeight: 70px;
+
+// Resets
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: $basefont;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* Helpers */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-content__center {
+  justify-content: center;
+}
+
+.align-items__center {
+  align-items: center;
+}
+
+.bordered {
+  border: 1px solid var(--secondary-bg-color)
+}
+
+.justify-content__sb {
+  justify-content: space-between
+}
+
+.justify-content__sa {
+  justify-content: space-around;
+}
+
+.rounded-edges {
+  border-radius: 5px;
+}
+
+.full-width {
+  width: 100%
+}
+
+.two-fifths {
+  width: 40%;
+}
+
+.three-fifths {
+  width: 60%;
+}
+
+.y-four-fifths {
+  height: 80%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.four-fifths {
+  width: 80%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+.my-5 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.my-2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.py-1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.pt {
+  padding-top: 50px;
+}
