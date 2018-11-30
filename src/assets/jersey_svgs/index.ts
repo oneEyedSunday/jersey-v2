@@ -43,5 +43,20 @@ export default [
     'src': 'assets/jersey_svgs/152718.svg',
     'title': 'Peru',
     'type': 'template'
+  },
+  {
+    'src': 'assets/jersey_svgs/UEFA_Champions_League.svg',
+    'title': 'UEFA_CL',
+    'type': 'badge'
+  },
+  {
+    'src': 'assets/jersey_svgs/Liga_BBVA.svg',
+    'title': 'LigaBBVA',
+    'type': 'badge'
+  },
+  {
+    'src': 'assets/jersey_svgs/Premier_League.svg',
+    'title': 'PremierLeague',
+    'type': 'badge'
   }
 ];
