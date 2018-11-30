@@ -2,9 +2,9 @@ import { Action } from '@ngrx/store';
 export const SELECT_TEXT = '[JERSEY] SELECT_TEXT';
 export const SELECT_FONT = '[JERSEY] SELECT_FONT';
 export const SELECT_NUMBER = '[JERSEY] SELECT_NUMBER';
-export const BADGE = '[JERSEY] SELECT_BADGE';
-export const BADGE_POSITION = '[JERSEY] BADGE_POSITION';
-export const BASE = '[JERSEY] SELECT_BASE';
+export const SELECT_BADGE = '[JERSEY] SELECT_BADGE';
+export const SELECT_BADGE_POSITION = '[JERSEY] SELECT_BADGE_POSITION';
+export const SELECT_TEMPLATE = '[JERSEY] SELECT_BASE_TEMPLATE';
 export const SELECT_PRI_COLOR =  '[JERSEY] SELECT_PRI_COLOR';
 export const SELECT_SEC_COLOR = '[JERSEY] SELECT_SEC_COLOR';
 export const COMPLETE = '[JERSEY] COMPLETE';
@@ -26,17 +26,17 @@ export class SelectNumber implements Action {
 }
 
 export class Badge implements Action {
-  readonly type = BADGE;
+  readonly type = SELECT_BADGE;
   constructor(public payload: String) {}
 }
 
 export class BadgePosition implements Action {
-  readonly type = BADGE_POSITION;
+  readonly type = SELECT_BADGE_POSITION;
   constructor(public payload: String) {}
 }
 
 export class Base implements Action {
-  readonly type = BASE;
+  readonly type = SELECT_TEMPLATE;
   constructor(public payload: String) {}
 }
 

@@ -19,17 +19,17 @@ export function reducer(state: Jersey = InitialJersey, action: fromActions.Actio
       number: action.payload
     });
 
-    case fromActions.BADGE:
+    case fromActions.SELECT_BADGE:
     return Object.assign({}, state, {
       badge: action.payload
     });
 
-    case fromActions.BADGE_POSITION:
+    case fromActions.SELECT_BADGE_POSITION:
     return Object.assign({}, state, {
       badge_position: action.payload
     });
 
-    case fromActions.BASE:
+    case fromActions.SELECT_TEMPLATE:
     return Object.assign({}, state, {
       base: action.payload
     });
