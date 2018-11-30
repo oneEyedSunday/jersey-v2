@@ -1,0 +1,70 @@
+<div>
+    <div class="text-center">
+      <h3>Text</h3>
+      <p class="">
+        Select your desired font style and enter some text for the front of the jersey.<br>
+        You can see what your jersey will look like in the preview below.
+      </p>
+    </div>
+  </div>
+
+  <div class="">
+    <label class="">Primary color:</label>
+    <input
+      type="color"
+      class=""
+      [(ngModel)]="jerseyPrimaryColor"
+      (input)="selectPrimaryColor(jerseyPrimaryColor)"
+       />
+  </div>
+
+  <div class="form-group row">
+    <label class="">Secondary color:</label>
+    <input
+      type="color"
+      class=""
+      [(ngModel)]="jerseySecondaryColor"
+      (input)="selectSecondaryColor(jerseySecondaryColor)"
+       />
+  </div>
+
+
+  <div class="">
+    <label for="font" class="col-sm-2 offset-sm-2 col-form-label">Font:</label>
+    <select
+      name="font"
+      class=""
+      [(ngModel)]="jerseyFontType"
+      (change)="selectFont(jerseyFontType)">
+        <option value="sans-serif" class="sans-serif">Sans-serif</option>
+        <option value="serif" class="serif">Serif</option>
+        <option value="Helvetica" class="helvetica">Helvetica</option>
+        <option value="Lato" class="lato">Lato</option>
+        <option value="Roboto" class="roboto">Roboto</option>
+        <option value="Montserrat" class="montserrat">Montserrat</option>
+    </select>
+  </div>
+
+  <div class="">
+    <label for="jerseyText" class="">Text:</label>
+    <input
+      id="jerseyText"
+      type="text"
+      class=""
+      [(ngModel)]="sponsorText"
+      (input)="addText(sponsorText)"
+      maxlength="8" />
+  </div>
+
+  <div class="">
+    <label for="jerseyNumber" class="">Number:</label>
+    <input
+      id="jerseyNumber"
+      type="number"
+      max="99"
+      min="1"
+      class="form-control col-sm-6"
+      [(ngModel)]="jerseyNumber"
+      (input)="selectNumber(jerseyNumber)"
+       />
+  </div>

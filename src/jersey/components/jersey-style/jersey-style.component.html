@@ -1,0 +1,17 @@
+<div>
+  <div class="text-center">
+    <h3>Base Template</h3>
+    <p>Choose a jersey template to get started</p>
+  </div>
+</div>
+
+<div *ngFor="let asset of templates">
+  <label for="asset.title">
+    <img [src]="asset.src">
+    <input type="radio"
+    name="baseTemplate"
+    [(ngModel)]="template"
+    (change)="selectTemplateEvent(template)"
+    [value]="asset.title">
+  </label>
+</div>

@@ -1,0 +1,17 @@
+<div class="jersey__container">
+  <p>
+    Hello, Create a customized jersey for yourself.
+    Choose from our array of templates
+  </p>
+
+  <app-jersey-style [templates]="assets" (selectTemplate)="selectTemplateEventHandler($event)"></app-jersey-style>
+
+  <app-jersey-text
+  *ngIf="jersey.base"
+  (selectJerseyFontEvent)="selectFontEventHandler($event)"
+  (selectJerseyNumberEvent)="selectNumberEventHandler($event)"
+  (selectJerseyTextEvent)="selectTextEventHandler($event)"
+  (selectJerseyPrimaryColorEvent)="selectPrimaryColorEventHandler($event)"
+  (selectJerseySecondaryColorEvent)="selectSecondaryColorEventHandler($event)"></app-jersey-text>
+</div>
+

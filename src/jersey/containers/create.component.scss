@@ -1,0 +1,13 @@
+:host {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.jersey__container {
+  height: 100%;
+  padding: 10px 5px;
+  min-height: calc(100vh - 112px);
+  background-color: #eee7e7;
+  p {
+    margin: 0;
+  }
+}
