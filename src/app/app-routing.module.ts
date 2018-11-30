@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: fromComponents.HomeComponent
+  },
+  {
+    path: 'jersey',
+    loadChildren: '../jersey/jersey.module#JerseyModule'
   }
 ];
 
