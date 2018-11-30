@@ -15,11 +15,13 @@ export class CreateComponent implements OnInit, OnDestroy {
   jerseyState$: Observable<JerseyModel>;
   private jerseyStateSubscription: Subscription;
   jersey: JerseyModel;
-  assets: any[];
+  templates: any[];
+  badges: any[];
   constructor(private store: Store<JerseyModel>) {
     // or store.pipe(select('jersey'))
     this.jerseyState$ = store.pipe(select(jerseyReducer.getJersey));
-    this.assets = svgs.filter(svg => svg.type = 'template');
+    this.templates = svgs.filter(svg => svg.type === 'template');
+    this.badges = svgs.filter(svg => svg.type === 'badge');
   }
 
   ngOnInit() {
@@ -35,7 +37,7 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   selectTemplateEventHandler(templateName: string) {
     this.store.dispatch({
-      type: fromActions.BASE,
+      type: fromActions.SELECT_TEMPLATE,
       payload: templateName
     });
   }
@@ -73,6 +75,20 @@ export class CreateComponent implements OnInit, OnDestroy {
     this.store.dispatch({
       type: fromActions.SELECT_SEC_COLOR,
       payload: color
+    });
+  }
+
+  selectBadgeEventHandler(badge: string) {
+    this.store.dispatch({
+      type: fromActions.SELECT_BADGE,
+      payload: badge
+    });
+  }
+
+  selectBadgePositionEventHandler(position: string) {
+    this.store.dispatch({
+      type: fromActions.SELECT_BADGE_POSITION,
+      payload: position
     });
   }
 

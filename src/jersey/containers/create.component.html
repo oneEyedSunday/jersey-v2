@@ -4,14 +4,21 @@
     Choose from our array of templates
   </p>
 
-  <app-jersey-style [templates]="assets" (selectTemplate)="selectTemplateEventHandler($event)"></app-jersey-style>
+  <app-jersey-style [templates]="templates" (selectTemplate)="selectTemplateEventHandler($event)"></app-jersey-style>
 
-  <app-jersey-text
-  *ngIf="jersey.base"
-  (selectJerseyFontEvent)="selectFontEventHandler($event)"
-  (selectJerseyNumberEvent)="selectNumberEventHandler($event)"
-  (selectJerseyTextEvent)="selectTextEventHandler($event)"
-  (selectJerseyPrimaryColorEvent)="selectPrimaryColorEventHandler($event)"
-  (selectJerseySecondaryColorEvent)="selectSecondaryColorEventHandler($event)"></app-jersey-text>
+  <ng-template [ngIf]="jersey.base">
+    <app-jersey-text
+    (selectJerseyFontEvent)="selectFontEventHandler($event)"
+    (selectJerseyNumberEvent)="selectNumberEventHandler($event)"
+    (selectJerseyTextEvent)="selectTextEventHandler($event)"
+    (selectJerseyPrimaryColorEvent)="selectPrimaryColorEventHandler($event)"
+    (selectJerseySecondaryColorEvent)="selectSecondaryColorEventHandler($event)"></app-jersey-text>
+
+    <app-jersey-extras
+    [badges]="badges"
+    (selectBadgeEvent)="selectBadgeEventHandler($event)"
+    (selectBadgePositionEvent)="selectBadgePositionEventHandler($event)"></app-jersey-extras>
+  </ng-template>
+
 </div>
 
