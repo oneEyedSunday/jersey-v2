@@ -6,12 +6,11 @@
   height: 100%;
 
   &__footer {
-    position: absolute;
-    bottom: 0;
     background-color: $primary-bg-color;
     font-family: 'Lato', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     display: block;
     width: 100%;
+    height: $footerHeight;
       p {
         padding: 10px;
         color: $text-color;
@@ -24,6 +23,7 @@
 .app__container {
   margin: 0 auto;
   width: 100%;
+  min-height: calc(100vh - calc(70px + 42px));
 }
 
 
