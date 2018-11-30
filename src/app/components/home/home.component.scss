@@ -7,7 +7,7 @@
   h1 {
     padding: 100px 0;
     margin: 0;
-    font: 44px 'Montserrat', 'Arial';
+    font: 3em 'Montserrat', 'Arial';
     text-align: center;
     color: #fff;
   }
@@ -31,7 +31,6 @@ section {
     margin: 0;
     letter-spacing: 1.2px;
     margin-right: 10%;
-    text-align: justify;
     width: 30%;
   }
 
@@ -53,14 +52,39 @@ section {
     img {
       width: 100%;
       height: 100%;
-      z-index: -300;
     }
   }
 }
 
 @media screen and (max-width: 830px) {
-  p.heading {
-    font-size: 1.9em;
+
+  .banner {
+    h1 {
+      font-size: 2.5em;
+    }
   }
+ section {
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 0;
+   padding: 0 3px;
+   font-size: 12px;
+   p.heading {
+     font-size: 1.9em;
+     width: 100%;
+     text-align: center;
+     margin-right: 0;
+     margin-bottom: 10px;
+   }
+
+   .image__div {
+     margin-right: 0;
+     width: 50%;
+   }
+   .content {
+     width: 100%;
+   }
+ }
 }
 
