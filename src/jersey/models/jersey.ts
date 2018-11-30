@@ -20,6 +20,6 @@ export const InitialJersey: Jersey = {
   badge_position: 'right',
   base: '',
   pricolor: '#000000',
-  seccolor: '#000000',
+  seccolor: '#ffffff',
   complete: false
 };
