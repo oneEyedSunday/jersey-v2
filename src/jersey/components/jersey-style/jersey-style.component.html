@@ -5,9 +5,9 @@
   </div>
 </div>
 
-<div *ngFor="let asset of templates">
-  <label for="asset.title">
-    <img [src]="asset.src">
+<div  class="row">
+  <label for="asset.title" *ngFor="let asset of templates" class="row--item text-center p--xy">
+    <img [src]="asset.src" class="image">
     <input type="radio"
     name="baseTemplate"
     [(ngModel)]="template"

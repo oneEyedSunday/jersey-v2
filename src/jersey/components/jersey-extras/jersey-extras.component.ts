@@ -12,7 +12,7 @@ export class JerseyExtrasComponent {
   @Output() selectBadgePositionEvent = new EventEmitter();
   badgeName: string;
   badgePosition: string = DefaultJersey.badge_position;
-  public sides =  ['left', 'right', 'center'];
+  public sides =  ['left', 'center', 'right'];
   constructor() { }
 
   selectBadge() {

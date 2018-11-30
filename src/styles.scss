@@ -102,3 +102,28 @@ a {
 .pt {
   padding-top: 50px;
 }
+
+.p--xy {
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.row--item {
+  // width: 100%;
+  min-width: 150px;
+  margin: auto;
+}
+
+.image {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-height: 50px;
+  max-width: 100%;
+  width: auto;
+}
