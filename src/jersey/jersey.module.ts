@@ -7,6 +7,7 @@ import { reducers, metaReducers } from './store';
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
 import { SafePipe } from './core/safe.pipe';
+import { SvgEditorService } from './core/svg-editor.service';
 
 
 @NgModule({
@@ -20,6 +21,9 @@ import { SafePipe } from './core/safe.pipe';
     ...fromContainers.containers,
     ...fromComponents.components,
     SafePipe,
+  ],
+  providers: [
+    SvgEditorService,
   ]
 })
 export class JerseyModule { }
