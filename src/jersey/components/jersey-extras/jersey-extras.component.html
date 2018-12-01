@@ -1,40 +1,42 @@
-<div class="">
-    <div class="text-center">
-      <h3>Badges and Crests</h3>
-      <p class="">Select any crest you would like for your jersey.</p>
-    </div>
-  </div>
-
-  <div class="row" >
-    <label class="row--item text-center p--xy" *ngFor="let asset of badges">
-      <img [src]="asset.src" class="image">
-      <input
-        type="radio"
-        name="badge"
-        [(ngModel)]="badgeName"
-        (change)="selectBadge()"
-        [value]="asset.title">
-    </label>
-  </div>
-
-  <ng-template [ngIf]="badgeName">
-    <div class=" ">
+<div class="card">
+    <div class="">
         <div class="text-center">
-          <h3>Badge Position</h3>
-          <p class="">
-          Select the position of the badge
-          </p>
+          <h3>Badges and Crests</h3>
+          <p class="">Select any crest you would like for your jersey.</p>
         </div>
-    </div>
-    <div class="row pos_home">
-      <label class="row--item text-center p--xy pos_dis t-{{side}}" *ngFor="let side of sides">{{ side | titlecase }}
-        <input
-          type="radio"
-          name="badge_position"
-          [(ngModel)]="badgePosition"
-          (change)="selectBadgePosition()"
-          [value]="side">
-      </label>
-    </div>
-  </ng-template>
+      </div>
+
+      <div class="row" >
+        <label class="row--item text-center p--xy" *ngFor="let asset of badges">
+          <img [src]="asset.src" class="image">
+          <input
+            type="radio"
+            name="badge"
+            [(ngModel)]="badgeName"
+            (change)="selectBadge()"
+            [value]="asset.title">
+        </label>
+      </div>
+
+      <ng-template [ngIf]="badgeName">
+        <div class=" ">
+            <div class="text-center">
+              <h3>Badge Position</h3>
+              <p class="">
+              Select the position of the badge
+              </p>
+            </div>
+        </div>
+        <div class="row pos_home">
+          <label class="row--item text-center p--xy pos_dis t-{{side}} force-line" *ngFor="let side of sides">{{ side | titlecase }}
+            <input
+              type="radio"
+              name="badge_position"
+              [(ngModel)]="badgePosition"
+              (change)="selectBadgePosition()"
+              [value]="side">
+          </label>
+        </div>
+      </ng-template>
+</div>
 

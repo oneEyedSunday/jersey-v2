@@ -1,25 +1,25 @@
 option {
-  .serif {
+  &.serif {
     font-family: serif;
   }
 
-  .sans-serif {
+  &.sans-serif {
     font-family: sans-serif;
   }
 
-  .lato {
+  &.lato {
     font-family: 'Lato';
   }
 
-  .roboto {
+  &.roboto {
     font-family: 'Roboto';
   }
 
-  .helvetica {
+  &.helvetica {
     font-family: Helvetica;
   }
 
-  .montserrat {
+  &.montserrat {
     font-family: 'Montserrat'
   }
 }
@@ -30,11 +30,15 @@ option {
   margin: 5px 0;
 
   &--input {
-    width: 40%
+    width: 40%;
+    box-sizing: content-box;
+    padding: 1px 5px;
+    border-width: 1px;
+    border-radius: 5px;
   }
 
   &--select {
-    width: 40%;
+    border-width: 2px;
   }
 
   &--label {
@@ -42,4 +46,9 @@ option {
     font-size: 0.9em;
     font-weight: bold;
   }
+
+  &:last-of-type {
+    margin-bottom: 15px;
+  }
 }
+

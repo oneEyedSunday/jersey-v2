@@ -1,70 +1,71 @@
-<div>
+<div class="card">
     <div class="text-center">
       <h3>Text</h3>
       <p class="">
         Select your desired font style and enter some text for the front of the jersey.
       </p>
     </div>
+
+    <div class="input__row">
+        <label class="input__row--label">Primary color:</label>
+        <input
+          [class]="'input__row--input'"
+          type="color"
+          class=""
+          [(ngModel)]="jerseyPrimaryColor"
+          (input)="selectPrimaryColor(jerseyPrimaryColor)"
+           />
+      </div>
+
+      <div class="input__row">
+        <label class="input__row--label">Secondary color:</label>
+        <input
+          [class]="'input__row--input'"
+          type="color"
+          [(ngModel)]="jerseySecondaryColor"
+          (input)="selectSecondaryColor(jerseySecondaryColor)"
+           />
+      </div>
+
+      <div class="input__row">
+        <label for="font" class="input__row--label">Font:</label>
+        <select
+          name="font"
+          [class]="'input__row--input'"
+          [(ngModel)]="jerseyFontType"
+          (change)="selectFont(jerseyFontType)">
+            <option value="sans-serif" class="sans-serif">Sans-serif</option>
+            <option value="serif" class="serif">Serif</option>
+            <option value="Helvetica" class="helvetica">Helvetica</option>
+            <option value="Lato" class="lato">Lato</option>
+            <option value="Roboto" class="roboto">Roboto</option>
+            <option value="Montserrat" class="montserrat">Montserrat</option>
+        </select>
+      </div>
+
+      <div class="input__row">
+        <label for="jerseyText" class="input__row--label">Text:</label>
+        <input
+          id="jerseyText"
+          type="text"
+          [class]="'input__row--input'"
+          [(ngModel)]="sponsorText"
+          (input)="addText(sponsorText)"
+          maxlength="8" />
+      </div>
+
+      <div class="input__row">
+        <label for="jerseyNumber" class="input__row--label">Number:</label>
+        <input
+          id="jerseyNumber"
+          type="number"
+          max="99"
+          min="1"
+          [class]="'input__row--input'"
+          [(ngModel)]="jerseyNumber"
+          (input)="selectNumber(jerseyNumber)"
+           />
+      </div>
 </div>
 
-  <div class="input__row">
-    <label class="input__row--label">Primary color:</label>
-    <input
-      [class]="'input__row--input'"
-      type="color"
-      class=""
-      [(ngModel)]="jerseyPrimaryColor"
-      (input)="selectPrimaryColor(jerseyPrimaryColor)"
-       />
-  </div>
 
-  <div class="input__row">
-    <label class="input__row--label">Secondary color:</label>
-    <input
-      [class]="'input__row--input'"
-      type="color"
-      [(ngModel)]="jerseySecondaryColor"
-      (input)="selectSecondaryColor(jerseySecondaryColor)"
-       />
-  </div>
-
-
-  <div class="input__row">
-    <label for="font" class="input__row--label">Font:</label>
-    <select
-      name="font"
-      [class]="'input__row--select'"
-      [(ngModel)]="jerseyFontType"
-      (change)="selectFont(jerseyFontType)">
-        <option value="sans-serif" class="sans-serif">Sans-serif</option>
-        <option value="serif" class="serif">Serif</option>
-        <option value="Helvetica" class="helvetica">Helvetica</option>
-        <option value="Lato" class="lato">Lato</option>
-        <option value="Roboto" class="roboto">Roboto</option>
-        <option value="Montserrat" class="montserrat">Montserrat</option>
-    </select>
-  </div>
-
-  <div class="input__row">
-    <label for="jerseyText" class="input__row--label">Text:</label>
-    <input
-      id="jerseyText"
-      type="text"
-      [class]="'input__row--input'"
-      [(ngModel)]="sponsorText"
-      (input)="addText(sponsorText)"
-      maxlength="8" />
-  </div>
-
-  <div class="input__row">
-    <label for="jerseyNumber" class="input__row--label">Number:</label>
-    <input
-      id="jerseyNumber"
-      type="number"
-      max="99"
-      min="1"
-      [class]="'input__row--input'"
-      [(ngModel)]="jerseyNumber"
-      (input)="selectNumber(jerseyNumber)"
-       />
-  </div>

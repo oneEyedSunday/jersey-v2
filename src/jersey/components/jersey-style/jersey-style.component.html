@@ -1,17 +1,17 @@
-<div>
+<div class="card">
   <div class="text-center">
     <h3>Base Template</h3>
     <p>Choose a jersey template to get started</p>
   </div>
-</div>
 
-<div  class="row">
-  <label for="asset.title" *ngFor="let asset of templates" class="row--item text-center p--xy">
-    <img [src]="asset.src" class="image">
-    <input type="radio"
-    name="baseTemplate"
-    [(ngModel)]="template"
-    (change)="selectTemplateEvent(template)"
-    [value]="asset.title">
-  </label>
+  <div  class="row">
+      <label for="asset.title" *ngFor="let asset of templates" class="row--item text-center p--xy">
+        <img [src]="asset.src" class="image">
+        <input type="radio"
+        name="baseTemplate"
+        [(ngModel)]="template"
+        (change)="selectTemplateEvent(template)"
+        [value]="asset.title">
+      </label>
+    </div>
 </div>
