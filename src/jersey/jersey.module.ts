@@ -6,6 +6,7 @@ import { JerseyRoutingModule } from './jersey-routing.module';
 import { reducers, metaReducers } from './store';
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
+import { SafePipe } from './core/safe.pipe';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import * as fromComponents from './components';
   declarations: [
     ...fromContainers.containers,
     ...fromComponents.components,
+    SafePipe,
   ]
 })
 export class JerseyModule { }
