@@ -19,6 +19,8 @@
     [badges]="badges"
     (selectBadgeEvent)="selectBadgeEventHandler($event)"
     (selectBadgePositionEvent)="selectBadgePositionEventHandler($event)"></app-jersey-extras>
+
+    <app-jersey-preview  *ngIf="jersey.base" [jersey]="jersey"></app-jersey-preview>
   </ng-template>
 
 </div>
