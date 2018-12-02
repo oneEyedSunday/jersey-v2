@@ -27,7 +27,7 @@ export class JerseyBaseComponent {
   @Input() baseSvgContent;
   constructor() {
   }
-};
+}
 
 @Component({
   selector: 'app-jersey-preview',
@@ -93,14 +93,5 @@ export class JerseyPreviewComponent implements OnChanges {
     console.log('changes', changes);
     if (changes.jersey.previousValue === undefined) {
       console.log('init');
-    } else {
-      // if (this.editorInitialized) {
-      // } else {
-      //   // this._svgEditor.setReferenceToSvg(this.svgObjectRef.nativeElement.contentDocument);
-      //   this.editorInitialized = true;
-      // }
-      // console.log(this.svgObjectRef.nativeElement.contentDocument.childNodes[0]);
-      // this._svgEditor.repaintSvg();
     }
-  }
 }
