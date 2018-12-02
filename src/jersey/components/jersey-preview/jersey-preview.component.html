@@ -1,6 +1,10 @@
 <div>
-  <div>
-    <object [data]="_svgEditor.sourceFromTemplateName | safe" type="image/svg+xml" #svgObject></object>
-    <!-- <img [src]="_svgEditor.sourceFromTemplateName | safe"  #svgObject> -->
-  </div>
+  <svg [attr.viewBox]="_svgEditor.sourceFromTemplateName.viewBox" [attr.fill]="jersey.pricolor" [attr.font-family]="jersey.font">
+      <svg:use xlink:href="#base" />
+      <svg:defs  app-jersey-base-svg [baseSvgContent]="_svgEditor.sourceFromTemplateName.svg_path">
+      </svg:defs>
+      <svg:text [attr.fill]="jersey.seccolor" font-weight="bold"  font-size="50" [attr.x]="numberCoords.x" [attr.y]="numberCoords.y" >{{ jersey.number }}</svg:text>
+      <svg:text [attr.fill]="jersey.seccolor" font-size="40" x="160" y="230" #jerseyTextRef>{{ jersey.text }}</svg:text>
+      <svg:image [attr.x]="badgeCoords.x" [attr.y]="badgeCoords.y" width="50" height="50" [attr.href]="_svgEditor.badgeUrlFromBadgeName" />
+  </svg>
 </div>
