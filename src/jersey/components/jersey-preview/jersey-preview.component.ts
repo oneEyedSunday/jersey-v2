@@ -94,4 +94,5 @@ export class JerseyPreviewComponent implements OnChanges {
     if (changes.jersey.previousValue === undefined) {
       console.log('init');
     }
+  }
 }
