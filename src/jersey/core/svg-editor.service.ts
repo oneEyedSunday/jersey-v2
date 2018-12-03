@@ -21,10 +21,19 @@ export class SvgEditorService {
     return Svgs.filter(svg => svg.title === this.jersey.base)[0];
   }
 
-  get badgeUrlFromBadgeName(): string {
+  get badgeUrlFromBadgeName(): any {
     const badge = Svgs.filter(svg => svg.title === this.jersey.badge)[0];
     if (badge) {
-      return badge.src;
+      return badge;
     } else { return ''; }
+  }
+
+  base64encoded(node): string {
+      const contentAsDom = (new DOMParser()).parseFromString(node.content ? node.content : node, 'text/xml');
+      const contentAsSerializedString = (new XMLSerializer()).serializeToString(contentAsDom);
+      const data = window.btoa(contentAsSerializedString);
+      const defaultEncoding = 'base64';
+      console.log(data);
+      return `data:image/svg+xml;${defaultEncoding},${data}`;
   }
 }
