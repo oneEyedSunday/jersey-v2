@@ -54,8 +54,6 @@ export class JerseyPreviewComponent implements OnInit {
     this.initialXCoord = this.jerseyTextCoords.x;
   }
 
-
-
   get numberCoords(): Coords {
     const position = {
       x: '300',

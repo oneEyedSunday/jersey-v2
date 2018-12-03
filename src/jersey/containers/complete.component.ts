@@ -45,7 +45,7 @@ export class CompleteComponent {
   initiateDownload() {
     const ctx = this.canvasRefNode.nativeElement.getContext('2d');
     const data = (new XMLSerializer()).serializeToString(this.svgRefNode.svgNode.nativeElement);
-    const DOMURL = window.URL; // || window.webkitURL || window;
+    const DOMURL = window.URL;
     const image = new Image();
     const svgBlob = new Blob([data], {type: 'image/svg+xml;charset=iso-8859-1'});
     const url = DOMURL.createObjectURL(svgBlob);
@@ -56,9 +56,6 @@ export class CompleteComponent {
       const imageURI = this.canvasRefNode.nativeElement.toDataURL('image/png')
         .replace('image/png', 'image/octet-stream');
       this.triggerDownload(imageURI);
-      // console.log(imageURI);
-      console.log('noting how many times onload calls');
-      return;
     };
     image.src = url;
   }
@@ -66,21 +63,11 @@ export class CompleteComponent {
   triggerDownload(url: string) {
     this.downloadLinkNode.nativeElement.setAttribute('href', url);
     this.downloadLinkNode.nativeElement.setAttribute('download', 'myCustomJersey.png');
-    console.log('calling triggerDownload');
     const event = new MouseEvent('click', {
       view: window,
       bubbles: false,
       cancelable: true
     });
-    /*
-    this.downloadLinkNode.nativeElement.addEventListener('click', (evt) => {
-      evt.preventDefault();
-      console.log('clicked from evt listener');
-      return false;
-    }, false);
-     this.downloadLinkNode.nativeElement.click();
-     return;
-     */
     this.downloadLinkNode.nativeElement.dispatchEvent(event);
   }
 
