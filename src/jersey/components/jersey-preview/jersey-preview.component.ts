@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy,
   Input, ViewChild,
-  ElementRef,
+  ElementRef, OnInit
  } from '@angular/core';
 import { Jersey } from '../../models/jersey';
 import { SvgEditorService } from '../../core/svg-editor.service';
@@ -36,14 +36,24 @@ export class JerseyBaseComponent {
   styleUrls: ['./jersey-preview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class JerseyPreviewComponent {
+export class JerseyPreviewComponent implements OnInit {
   @Input() jersey: Jersey;
   @ViewChild('jerseyTextRef') jerseyTextNode: ElementRef;
   _svgEditor: SvgEditorService;
-  editorInitialized = false;
+  initialXCoord: string = undefined;
   constructor(private svgEditor: SvgEditorService) {
     this._svgEditor = svgEditor;
   }
+
+  ngOnInit () {
+      setTimeout(() => { this.updateJerseyTextCoords(); }, 50);
+  }
+
+  updateJerseyTextCoords() {
+    this.initialXCoord = this.jerseyTextCoords.x;
+  }
+
+
 
   get numberCoords(): Coords {
     const position = {
@@ -76,7 +86,7 @@ export class JerseyPreviewComponent {
     return this.jerseyTextNode.nativeElement.getBBox();
   }
 
-  get jerseyTextCoords() {
+  get jerseyTextCoords(): Coords {
     const TEXTLEFTCOORD = 150;
     const position: Coords = {
       x: '150',
@@ -95,6 +105,14 @@ export class JerseyPreviewComponent {
     // if space is too much
     // adjust x of text
     // so text moves to fill extra space
+    if (this.contentBox.x === 0) {
+      return {y: position.y, x: localStorage.getItem('jerseyv2-xcoord') || '150'};
+    }
+    const dLeft = TEXTLEFTCOORD - parseInt(position.x, 10);
+    const dRight = ACCEPTABLEEDGE - (parseInt(position.x, 10) + this.contentBox.width);
+    console.log(dLeft, dRight);
+    position.x = (TEXTLEFTCOORD + ((dLeft + dRight) / 2)).toString();
+    /*
     if (this.contentBox.x !== 0) {
       const spaceFromEdge = ACCEPTABLEEDGE - (this.contentBox.x + this.contentBox.width);
       // adjust starting position to center text
@@ -102,6 +120,8 @@ export class JerseyPreviewComponent {
     } else {
       position.x = '225';
     }
+    */
+   localStorage.setItem('jerseyv2-xcoord', position.x);
     return position;
   }
 

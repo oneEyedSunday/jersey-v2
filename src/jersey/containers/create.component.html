@@ -24,7 +24,7 @@
 
     <app-jersey-preview  *ngIf="jersey.base" [jersey]="jersey"></app-jersey-preview>
     <p class=text-center>
-      <button class="button" *ngIf="jersey.base" (click)="jerseyCreationCompleted()" aria->Done</button>
+      <button class="button" *ngIf="jersey.base" (click)="jerseyCreationCompleted()" routerLink="complete">Done</button>
     </p>
   </ng-template>
 

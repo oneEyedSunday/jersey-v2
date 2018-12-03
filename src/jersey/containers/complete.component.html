@@ -1,0 +1,17 @@
+<div class="flex-column">
+  <ng-template [ngIf]="(jerseyState$ | async).complete">
+    <div class="row">
+      <p class="text-center">
+        <strong>Congratulations!</strong> You've created a custom jersey. Would you like to <a (click)="newJersey()" routerLink="/jersey" class="alert-link">create another?</a>
+        or continue <a routerLink="/jersey">customizing</a>
+      </p>
+    </div>
+    <app-jersey-preview [jersey]="(jerseyState$ | async)"></app-jersey-preview>
+  </ng-template>
+
+  <ng-template [ngIf]="!(jerseyState$ | async).complete">
+    <p class="text-center">
+      <strong>Oops!</strong> You haven't customized a jersey yet. <a routerLink="/jersey" class="alert-link">Click here to create one now.</a>
+    </p>
+  </ng-template>
+</div>
