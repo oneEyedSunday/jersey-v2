@@ -5,7 +5,7 @@
     You can see what your jersey looks like in the preview pane.
   </p>
 
-  <app-jersey-style [templates]="templates" (selectTemplate)="selectTemplateEventHandler($event)"></app-jersey-style>
+  <app-jersey-style [templates]="templates" (selectTemplate)="selectTemplateEventHandler($event)" [selectedTemplate]="jersey.base"></app-jersey-style>
 
   <ng-template [ngIf]="jersey.base">
     <app-jersey-text
@@ -13,14 +13,19 @@
     (selectJerseyNumberEvent)="selectNumberEventHandler($event)"
     (selectJerseyTextEvent)="selectTextEventHandler($event)"
     (selectJerseyPrimaryColorEvent)="selectPrimaryColorEventHandler($event)"
-    (selectJerseySecondaryColorEvent)="selectSecondaryColorEventHandler($event)"></app-jersey-text>
+    (selectJerseySecondaryColorEvent)="selectSecondaryColorEventHandler($event)"
+    [currentJersey]="jersey"></app-jersey-text>
 
     <app-jersey-extras
     [badges]="badges"
     (selectBadgeEvent)="selectBadgeEventHandler($event)"
-    (selectBadgePositionEvent)="selectBadgePositionEventHandler($event)"></app-jersey-extras>
+    (selectBadgePositionEvent)="selectBadgePositionEventHandler($event)"
+    [currentJersey]="jersey"></app-jersey-extras>
 
     <app-jersey-preview  *ngIf="jersey.base" [jersey]="jersey"></app-jersey-preview>
+    <p class=text-center>
+      <button class="button" *ngIf="jersey.base" (click)="jerseyCreationCompleted()" aria->Done</button>
+    </p>
   </ng-template>
 
 </div>

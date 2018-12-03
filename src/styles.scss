@@ -135,3 +135,20 @@ a {
   background-color: #e4e4e4;
   padding: 10px 2px;
 }
+
+.button {
+  padding: 10px 20px;
+  font-family: 'Montserrat', 'Trebuchet MS', 'Cambria', Arial, sans-serif;
+  background-color: rgb(57, 216, 57);
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  transition: all ease-in 0.2s;
+
+  &:focus, &:hover {
+    background-color: #fff;
+    color: rgb(57, 216, 57);
+    border-color: rgb(57,216,57);
+    cursor: pointer;
+  }
+}
