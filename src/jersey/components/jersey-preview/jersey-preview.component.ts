@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy,
-  Input, OnChanges, SimpleChanges, ViewChild,
+  Input, ViewChild,
   ElementRef,
  } from '@angular/core';
 import { Jersey } from '../../models/jersey';
@@ -36,9 +36,9 @@ export class JerseyBaseComponent {
   styleUrls: ['./jersey-preview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class JerseyPreviewComponent implements OnChanges {
+export class JerseyPreviewComponent {
   @Input() jersey: Jersey;
-  @ViewChild('jerseyTextRef') jerseyTextNode;
+  @ViewChild('jerseyTextRef') jerseyTextNode: ElementRef;
   _svgEditor: SvgEditorService;
   editorInitialized = false;
   constructor(private svgEditor: SvgEditorService) {
@@ -77,23 +77,37 @@ export class JerseyPreviewComponent implements OnChanges {
   }
 
   get jerseyTextCoords() {
+    const TEXTLEFTCOORD = 150;
+    const position: Coords = {
+      x: '150',
+      y: '250'
+    };
+
+    const ACCEPTABLEEDGE = 350;
     // remember to update maxlength of jersey text
     // using the contentBox above to get the coords for text
     // reduce font size
     // adjust starting position to create a 'justified' feel
-    return '';
+
+    // get width of text
+    // x + width;
+    // compare to acceptable edge of text
+    // if space is too much
+    // adjust x of text
+    // so text moves to fill extra space
+    if (this.contentBox.x !== 0) {
+      const spaceFromEdge = ACCEPTABLEEDGE - (this.contentBox.x + this.contentBox.width);
+      // adjust starting position to center text
+      position.x = (TEXTLEFTCOORD + (spaceFromEdge / 2)).toString();
+    } else {
+      position.x = '225';
+    }
+    return position;
   }
 
   decorateText() {
     // to insert decorative content like
     // breaks <br />>
     return '';
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('changes', changes);
-    if (changes.jersey.previousValue === undefined) {
-      console.log('init');
-    }
   }
 }
