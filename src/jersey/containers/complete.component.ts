@@ -1,32 +1,87 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { getJersey } from '../store';
 import { RESET } from '../store/actions';
 import { Jersey as JerseyModel } from '../models/jersey';
+import { JerseyPreviewComponent } from '../components';
 
 @Component({
   selector: 'app-complete',
   templateUrl: './complete.component.html',
   styleUrls: ['./complete.component.scss']
 })
-export class CompleteComponent implements OnInit, OnDestroy {
+export class CompleteComponent {
   jersey: JerseyModel;
   jerseyState$: Observable<JerseyModel>;
+  @ViewChild(JerseyPreviewComponent) svgRefNode: JerseyPreviewComponent;
+  @ViewChild('canvasRef') canvasRefNode: ElementRef;
+  @ViewChild('downloadLinkRef') downloadLinkNode: ElementRef;
+  base64svg: string = undefined;
+  svgConverted = false;
   constructor(private store: Store<JerseyModel>) {
     this.jerseyState$ = store.pipe(select(getJersey));
   }
 
-  ngOnInit() {
+  /*
+  ngAfterViewInit() {
+    if (this.svgRefNode) {
+      const serializer = new XMLSerializer();
+      let data = serializer.serializeToString(this.svgRefNode.svgNode.nativeElement);
+      // data = window.btoa(data);
+      // console.log(data);
+      this.base64svg = `data:image/svg+xml;iso-8859-1,${data}`;
+      this.svgConverted = true;
+      // console.log(this.svgRefNode.svgNode.nativeElement);
+    }
   }
-
-  ngOnDestroy(): void {
-  }
-
+  */
   newJersey() {
     this.store.dispatch({
       type: RESET
     });
+  }
+
+  initiateDownload() {
+    const ctx = this.canvasRefNode.nativeElement.getContext('2d');
+    const data = (new XMLSerializer()).serializeToString(this.svgRefNode.svgNode.nativeElement);
+    const DOMURL = window.URL; // || window.webkitURL || window;
+    const image = new Image();
+    const svgBlob = new Blob([data], {type: 'image/svg+xml;charset=iso-8859-1'});
+    const url = DOMURL.createObjectURL(svgBlob);
+
+    image.onload = () => {
+      ctx.drawImage(image, 0, 0);
+      DOMURL.revokeObjectURL(url);
+      const imageURI = this.canvasRefNode.nativeElement.toDataURL('image/png')
+        .replace('image/png', 'image/octet-stream');
+      this.triggerDownload(imageURI);
+      // console.log(imageURI);
+      console.log('noting how many times onload calls');
+      return;
+    };
+    image.src = url;
+  }
+
+  triggerDownload(url: string) {
+    this.downloadLinkNode.nativeElement.setAttribute('href', url);
+    this.downloadLinkNode.nativeElement.setAttribute('download', 'myCustomJersey.png');
+    console.log('calling triggerDownload');
+    const event = new MouseEvent('click', {
+      view: window,
+      bubbles: false,
+      cancelable: true
+    });
+    /*
+    this.downloadLinkNode.nativeElement.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      console.log('clicked from evt listener');
+      return false;
+    }, false);
+     this.downloadLinkNode.nativeElement.click();
+     return;
+     */
+    this.downloadLinkNode.nativeElement.dispatchEvent(event);
   }
 
 }

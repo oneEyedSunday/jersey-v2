@@ -39,6 +39,7 @@ export class JerseyBaseComponent {
 export class JerseyPreviewComponent implements OnInit {
   @Input() jersey: Jersey;
   @ViewChild('jerseyTextRef') jerseyTextNode: ElementRef;
+  @ViewChild('svgNodeRef') svgNode: ElementRef;
   _svgEditor: SvgEditorService;
   initialXCoord: string = undefined;
   constructor(private svgEditor: SvgEditorService) {

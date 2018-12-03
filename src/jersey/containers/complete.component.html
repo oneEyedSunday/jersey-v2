@@ -6,7 +6,17 @@
         or continue <a routerLink="/jersey">customizing</a>
       </p>
     </div>
+    <!-- <ng-template [ngIf]="svgConverted">
+      <img [src]="base64svg | safe: 'resourceUrl' ">
+    </ng-template> -->
     <app-jersey-preview [jersey]="(jerseyState$ | async)"></app-jersey-preview>
+    <canvas #canvasRef class="display--none"></canvas>
+    <p class="text-center">
+        <button class="button" (click)="initiateDownload()">
+          Download Jersey
+          <a #downloadLinkRef class="display--none"></a>
+        </button>
+    </p>
   </ng-template>
 
   <ng-template [ngIf]="!(jerseyState$ | async).complete">

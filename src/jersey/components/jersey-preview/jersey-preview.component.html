@@ -1,5 +1,5 @@
 <div class="card flex justify-content__center">
-  <svg [attr.viewBox]="_svgEditor.sourceFromTemplateName.viewBox" [attr.fill]="jersey.pricolor" [attr.font-family]="jersey.font" class="sizeSvg">
+  <svg [attr.viewBox]="_svgEditor.sourceFromTemplateName.viewBox" [attr.fill]="jersey.pricolor" [attr.font-family]="jersey.font" class="sizeSvg" #svgNodeRef>
       <svg:use xlink:href="#base" />
       <svg:defs  app-jersey-base-svg [baseSvgContent]="_svgEditor.sourceFromTemplateName.svg_path">
       </svg:defs>
