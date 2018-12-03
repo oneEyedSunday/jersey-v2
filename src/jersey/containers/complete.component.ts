@@ -23,19 +23,6 @@ export class CompleteComponent {
     this.jerseyState$ = store.pipe(select(getJersey));
   }
 
-  /*
-  ngAfterViewInit() {
-    if (this.svgRefNode) {
-      const serializer = new XMLSerializer();
-      let data = serializer.serializeToString(this.svgRefNode.svgNode.nativeElement);
-      // data = window.btoa(data);
-      // console.log(data);
-      this.base64svg = `data:image/svg+xml;iso-8859-1,${data}`;
-      this.svgConverted = true;
-      // console.log(this.svgRefNode.svgNode.nativeElement);
-    }
-  }
-  */
   newJersey() {
     this.store.dispatch({
       type: RESET
