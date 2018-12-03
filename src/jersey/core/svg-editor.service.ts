@@ -33,7 +33,6 @@ export class SvgEditorService {
       const contentAsSerializedString = (new XMLSerializer()).serializeToString(contentAsDom);
       const data = window.btoa(contentAsSerializedString);
       const defaultEncoding = 'base64';
-      console.log(data);
       return `data:image/svg+xml;${defaultEncoding},${data}`;
   }
 }
