@@ -5,7 +5,6 @@
       </svg:defs>
       <svg:text [attr.fill]="jersey.seccolor" font-weight="bold"  font-size="50" [attr.x]="numberCoords.x" [attr.y]="numberCoords.y" >{{ jersey.number }}</svg:text>
       <svg:text [attr.fill]="jersey.seccolor" font-size="40" [attr.x]="jerseyTextCoords.x" [attr.y]="jerseyTextCoords.y" #jerseyTextRef>{{ jersey.text }}</svg:text>
-      <svg:image [attr.x]="badgeCoords.x" [attr.y]="badgeCoords.y" width="50" height="50" [attr.src]="_svgEditor.base64encoded(_svgEditor.badgeUrlFromBadgeName)" />
+      <svg:image *ngIf="jersey.badge" [attr.x]="badgeCoords.x" [attr.y]="badgeCoords.y" width="50" height="50" [attr.href]="_svgEditor.base64encoded(_svgEditor.badgeUrlFromBadgeName)" />
   </svg>
-  <img [src]="_svgEditor.base64encoded(_svgEditor.badgeUrlFromBadgeName) | safe: 'resourceUrl' ">
 </div>
