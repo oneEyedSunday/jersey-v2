@@ -18,6 +18,7 @@ interface BBox {
 }
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: ' [app-jersey-base-svg] ',
   template: `
   <svg:g [innerHtml]=" baseSvgContent | safe: 'html'  " id="base"></svg:g>

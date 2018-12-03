@@ -1,8 +1,8 @@
 import { createFeatureSelector } from '@ngrx/store';
 import * as fromActions from '../actions';
-import { InitialJersey, Jersey } from '../../models/jersey';
+import { InitialJersey, Jersey as JerseyModel} from '../../models/jersey';
 
-export function reducer(state: Jersey = InitialJersey, action: fromActions.Actions): Jersey {
+export function reducer(state: JerseyModel = InitialJersey, action: fromActions.Actions): JerseyModel {
   switch (action.type) {
     case fromActions.SELECT_TEXT:
     return Object.assign({}, state, {
@@ -57,4 +57,4 @@ export function reducer(state: Jersey = InitialJersey, action: fromActions.Actio
   }
 }
 
-export const getJersey = createFeatureSelector<Jersey>('jersey');
+export const getJersey = createFeatureSelector<JerseyModel>('jersey');

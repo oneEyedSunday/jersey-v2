@@ -92,4 +92,11 @@ export class CreateComponent implements OnInit, OnDestroy {
     });
   }
 
+  jerseyCreationCompleted() {
+    this.store.dispatch({
+      type: fromActions.COMPLETE,
+      payload: true
+    });
+  }
+
 }

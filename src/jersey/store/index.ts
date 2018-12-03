@@ -1,7 +1,7 @@
 import { ActionReducer, MetaReducer, ActionReducerMap } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import { reducer as jerseyReducer } from './reducers';
-import { Jersey } from '../models/jersey';
+import { Jersey as JerseyModel } from '../models/jersey';
 
 export function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return function(state: AppState, action: any): AppState {
@@ -12,7 +12,7 @@ export function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState
 }
 
 interface AppState {
-  jersey: Jersey;
+  jersey: JerseyModel;
 }
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
