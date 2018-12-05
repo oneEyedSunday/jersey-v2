@@ -72,8 +72,12 @@
       color: #fff;
     }
 
-    a:focus, a:hover, a:active, a.active {
+    a:focus, a:hover, {
       color: $primary-bg-color;
+    }
+
+    a:active, a.active, {
+      color: rgba(27, 40, 61, 0.83);
     }
   }
 }
