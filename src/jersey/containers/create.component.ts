@@ -26,7 +26,6 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.jerseyStateSubscription = this.jerseyState$.subscribe(state => {
-      console.log(state);
       this.jersey = state;
     });
   }

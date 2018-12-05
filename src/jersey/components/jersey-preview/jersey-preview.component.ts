@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy,
   Input, ViewChild,
-  ElementRef, OnInit
+  ElementRef, OnInit,
+  Output, EventEmitter
  } from '@angular/core';
 import { Jersey } from '../../models/jersey';
 import { SvgEditorService } from '../../core/svg-editor.service';
@@ -38,8 +39,10 @@ export class JerseyBaseComponent {
 })
 export class JerseyPreviewComponent implements OnInit {
   @Input() jersey: Jersey;
+  @Input() showDoneButton: boolean;
   @ViewChild('jerseyTextRef') jerseyTextNode: ElementRef;
   @ViewChild('svgNodeRef') svgNode: ElementRef;
+  @Output() jerseyCreationDoneEvent = new EventEmitter();
   _svgEditor: SvgEditorService;
   initialXCoord: string = undefined;
   constructor(private svgEditor: SvgEditorService) {
@@ -48,6 +51,10 @@ export class JerseyPreviewComponent implements OnInit {
 
   ngOnInit () {
       setTimeout(() => { this.updateJerseyTextCoords(); }, 50);
+  }
+
+  jerseyCreationCompleted() {
+    this.jerseyCreationDoneEvent.emit();
   }
 
   updateJerseyTextCoords() {
@@ -129,4 +136,6 @@ export class JerseyPreviewComponent implements OnInit {
     // breaks <br />>
     return '';
   }
+
+
 }

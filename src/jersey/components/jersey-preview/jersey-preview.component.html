@@ -1,4 +1,4 @@
-<div class="card flex justify-content__center">
+<div class="card flex-column justify-content__center">
   <svg [attr.viewBox]="_svgEditor.sourceFromTemplateName.viewBox" [attr.fill]="jersey.pricolor" [attr.font-family]="jersey.font" class="sizeSvg" #svgNodeRef>
       <svg:use xlink:href="#base" />
       <svg:defs  app-jersey-base-svg [baseSvgContent]="_svgEditor.sourceFromTemplateName.svg_path">
@@ -7,4 +7,7 @@
       <svg:text [attr.fill]="jersey.seccolor" font-size="40" [attr.x]="jerseyTextCoords.x" [attr.y]="jerseyTextCoords.y" #jerseyTextRef>{{ jersey.text }}</svg:text>
       <svg:image *ngIf="jersey.badge" [attr.x]="badgeCoords.x" [attr.y]="badgeCoords.y" width="50" height="50" [attr.href]="_svgEditor.base64encoded(_svgEditor.badgeUrlFromBadgeName)" />
   </svg>
+  <p class=text-center *ngIf="showDoneButton">
+    <button class="button"  (click)="jerseyCreationCompleted()" routerLink="complete">Done</button>
+  </p>
 </div>
